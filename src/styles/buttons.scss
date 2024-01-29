@@ -1,0 +1,29 @@
+:root {
+  --primary-button-disabled: rgb(244, 122, 122);
+  --primary-button-background: rgb(239, 65, 65);
+  --primary-button-hover: rgb(225, 28, 28);
+  --primary-button-text: rgb(255, 255, 255);
+
+  --secondary-button-background: rgb(239, 239, 239);
+  --secondary-button-hover: rgb(219, 219, 219);
+  --secondary-button-text: rgb(115, 115, 115);
+
+  --tertiary-button-background: rgb(255, 255, 255);
+  --tertiary-button-border: rgb(219, 219, 219);
+  --tertiary-button-hover: rgb(245, 245, 245);
+  --tertiary-button-text: rgb(38, 38, 38);
+}
+
+$primary_button_disabled: var(--primary-button-disabled);
+$primary_button_background: var(--primary-button-background);
+$primary_button_hover: var(--primary-button-hover);
+$primary_button_text: var(--primary-button-text);
+
+$secondary_button_background: var(--secondary-button-background);
+$secondary_button_hover: var(--secondary-button-hover);
+$secondary_button_text: var(--secondary-button-text);
+
+$tertiary_button_background: var(--tertiary-button-background);
+$tertiary_button_border: var(--tertiary-button-border);
+$tertiary_button_hover: var(--tertiary-button-hover);
+$tertiary_button_text: var(--tertiary-button-text);
