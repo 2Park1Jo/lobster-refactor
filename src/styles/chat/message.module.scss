@@ -1,0 +1,37 @@
+.message_editor_container {
+  display: flex;
+  width: 96%;
+  flex-direction: column;
+  border: 0.5px solid gray;
+  border-radius: 10px;
+  padding: 6px;
+}
+
+.chat_view_container {
+  width: 100%;
+}
+
+.none_avatar_message_container {
+  font-weight: bold;
+  word-break: break-all;
+  padding-left: 52px;
+}
+
+.avatar_message_container {
+  display: flex;
+}
+
+.message_avatar {
+  padding-right: 10px;
+}
+
+.message_timestamp {
+  color: gray;
+  font-size: 12px;
+  padding-left: 6px;
+}
+
+.message_content {
+  font-weight: bold;
+  word-break: 'break-all';
+}
