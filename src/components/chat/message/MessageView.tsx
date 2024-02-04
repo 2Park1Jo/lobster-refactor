@@ -6,7 +6,7 @@ import MessageExtraMenu from './MessageExtraMenu'
 
 interface MessageViewProps {
   message: Message
-  beforeSenderId: string
+  beforeMessage: Message | null
 }
 
 const MessageView: React.FC<MessageViewProps> = (props) => {
@@ -15,7 +15,7 @@ const MessageView: React.FC<MessageViewProps> = (props) => {
     <ListItem
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      content={<MessageContent message={props.message} beforeSenderId={props.beforeSenderId} />}
+      content={<MessageContent message={props.message} beforeMessage={props.beforeMessage} />}
       rightContent={isHover && <MessageExtraMenu />}
     />
   )
