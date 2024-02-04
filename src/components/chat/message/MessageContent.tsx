@@ -27,7 +27,12 @@ const MessageContent: React.FC<MessageViewProps> = (props) => {
       <VStack>
         <Text bold>
           {props.message.sender.name}
-          <Text className={messageStyles.message_timestamp}>{String(props.message.timeStamp)}</Text>
+          <Text
+            className={messageStyles.message_timestamp}
+            style={{ color: 'gray', fontSize: '12px', paddingLeft: '6px' }}
+          >
+            {String(props.message.timeStamp)}
+          </Text>
         </Text>
         <Text className={messageStyles.message_content}>{props.message.content}</Text>
       </VStack>
