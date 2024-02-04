@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { User } from '../../interfaces/user/User'
-import { Avatar, ListItem, Badge } from '@channel.io/bezier-react'
+import { Avatar, ListItem, Badge, TagBadgeVariant } from '@channel.io/bezier-react'
 import { MeIcon } from '@channel.io/bezier-icons'
 import { CHAT_ROOM } from '../../recoil/atoms'
 import { useRecoilState } from 'recoil'
@@ -25,7 +25,15 @@ const UserCard: React.FC<UserCardProps> = (props) => {
       onMouseLeave={() => setIsHover(false)}
       leftContent={<Avatar name={props.user.name} avatarUrl={props.user.profileImage} status={props.user.status} />}
       content={props.user.name}
-      rightContent={props.isMe ? <Badge icon={MeIcon} /> : props.isEmailHide ? '' : isHover && props.user.email}
+      rightContent={
+        props.isMe ? (
+          <Badge variant={TagBadgeVariant.Red} icon={MeIcon} />
+        ) : props.isEmailHide ? (
+          ''
+        ) : (
+          isHover && props.user.email
+        )
+      }
     />
   )
 }
