@@ -10,7 +10,7 @@ const ChatView: React.FC = () => {
   return (
     <div className={messageStyles.chat_view_container}>
       {messages.map((message, index) => (
-        <MessageView key={index} message={message} beforeSenderId={index > 0 ? messages[index - 1].sender.id : ''} />
+        <MessageView key={index} message={message} beforeMessage={index > 0 ? messages[index - 1] : null} />
       ))}
     </div>
   )
