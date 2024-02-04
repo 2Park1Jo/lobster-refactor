@@ -12,7 +12,12 @@ interface UserMiniProfileProps {
 const UserMiniProfile: React.FC<UserMiniProfileProps> = (props) => {
   return (
     <div className={userProfileStyles.container}>
-      <Avatar name={props.user.name} size={AvatarSize.Size90} status={props.user.status} />
+      <Avatar
+        name={props.user.name}
+        size={AvatarSize.Size90}
+        status={props.user.status}
+        avatarUrl={props.user.profileImage}
+      />
       <Text bold typo={Typography.Size18} marginAll={5}>
         {props.user.name}
       </Text>
