@@ -1,15 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Carousel from 'react-spring-3d-carousel'
-import { useNavigate } from 'react-router-dom'
 import { config } from 'react-spring'
-import { useSetRecoilState } from 'recoil'
-// import { ACCESSED_DEPARTMENT, WORKSPACE_ID } from '../../recoil/Atoms'
-// import { WORKSPACE_ADD_KEY } from '../../utils/Constant'
 
 interface Card {
-  // Adjust types according to your card structure
   key: string
-  // ... other properties
 }
 
 interface WorkspaceCarouselProps {
@@ -23,7 +17,7 @@ interface WorkspaceCarouselProps {
   showArrows: boolean
 }
 
-export default function WorkspaceCarousel(props: WorkspaceCarouselProps) {
+const WorkspaceCarousel: React.FC<WorkspaceCarouselProps> = (props: WorkspaceCarouselProps) => {
   const table: Card[] = props.cards.map((element, index) => ({
     ...element,
     onClick: () => onClickCard(index),
@@ -34,26 +28,9 @@ export default function WorkspaceCarousel(props: WorkspaceCarouselProps) {
   const [goToSlide, setGoToSlide] = useState<number>(0)
   const [cards] = useState<Card[]>(table)
   const currentSlide = useRef<number>(goToSlide)
-  //   const setWorkspaceId = useSetRecoilState(WORKSPACE_ID)
-  //   const setAccessedDepartment = useSetRecoilState(ACCESSED_DEPARTMENT)
-  const navigate = useNavigate()
 
   function onClickCard(index: number) {
-    if (currentSlide.current === index) {
-      if (cards[index].key === '0') {
-        props.setModalIsOpen(true)
-        document.body.style.overflow = 'hidden'
-      } else {
-        // setWorkspaceId(cards[index].key)
-        // setAccessedDepartment({
-        //   id: cards[index].key + '_1',
-        //   name: '📢 공지방',
-        // })
-        localStorage.setItem('accessedWorkspaceId', cards[index].key)
-        localStorage.setItem('accessedDepartmentId', cards[index].key)
-        navigate('/workspace/' + cards[index].key + '/chat/department/' + cards[index].key)
-      }
-    } else {
+    if (currentSlide.current !== index) {
       setGoToSlide(index)
     }
   }
@@ -85,3 +62,5 @@ export default function WorkspaceCarousel(props: WorkspaceCarouselProps) {
     </div>
   )
 }
+
+export default WorkspaceCarousel

@@ -1,6 +1,7 @@
 import React from 'react'
 import WorkspaceCard from './WorkspaceCard'
 import WorkspaceCarousel from './WorkspaceCarousel'
+import { WORKSPACE_EMPTY_CARD_KEY, RANDOM_IMAGE_URL } from '../../../constants/workspace'
 
 interface WorkSpaceBannerProps {
   allWorkspace: any[]
@@ -8,20 +9,15 @@ interface WorkSpaceBannerProps {
   setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const WorkSpaceBanner: React.FC<WorkSpaceBannerProps> = ({ allWorkspace, modalIsOpen, setModalIsOpen }) => {
-  let cards: { key: string; content: React.ReactNode }[] = []
+const WorkSpaceBanner: React.FC<WorkSpaceBannerProps> = (props) => {
+  const cards: { key: string; content: React.ReactNode }[] = []
 
-  cards.push({
-    key: '0',
-    content: <WorkspaceCard image="assets/images/plus.png" heading="워크스페이스 추가하기" overline={'0'} />,
-  })
-
-  allWorkspace.map((workspace) => {
+  props.allWorkspace.map((workspace) => {
     cards.push({
       key: workspace.workspaceId,
       content: (
         <WorkspaceCard
-          image={`https://picsum.photos/500/300?img=${workspace.workspaceId}`}
+          image={RANDOM_IMAGE_URL + workspace.workspaceId}
           overline={workspace.workspaceDeadline}
           heading={workspace.workspaceName}
           body={workspace.workspaceGoal}
@@ -32,7 +28,7 @@ const WorkSpaceBanner: React.FC<WorkSpaceBannerProps> = ({ allWorkspace, modalIs
 
   if (cards.length === 2) {
     cards.push({
-      key: '0',
+      key: WORKSPACE_EMPTY_CARD_KEY,
       content: <></>,
     })
   }
@@ -45,8 +41,8 @@ const WorkSpaceBanner: React.FC<WorkSpaceBannerProps> = ({ allWorkspace, modalIs
       margin="0 auto"
       offset={2}
       showArrows={false}
-      modalIsOpen={modalIsOpen}
-      setModalIsOpen={setModalIsOpen}
+      modalIsOpen={props.modalIsOpen}
+      setModalIsOpen={props.setModalIsOpen}
     />
   )
 }

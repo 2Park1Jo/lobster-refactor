@@ -21,7 +21,7 @@ const Login: React.FC = () => {
 
   const handleLogin = () => {
     if (!loginButtonDisabled) {
-      navigate('/workspace')
+      navigate('/workspaceBanner')
     }
   }
 
