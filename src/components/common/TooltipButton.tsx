@@ -14,6 +14,7 @@ interface TooltipButtonProps {
   buttonContent: BezierIcon | string
   buttonSize?: ButtonSize
   buttonStyleVariant?: ButtonStyleVariant
+  buttonColorVariant?: ButtonColorVariant
   onClick: () => void
 }
 
@@ -29,7 +30,7 @@ const TooltipButton: React.FC<TooltipButtonProps> = (props) => {
       <Button
         size={props.buttonSize ? props.buttonSize : ButtonSize.M}
         leftContent={props.buttonContent}
-        colorVariant={ButtonColorVariant.MonochromeDark}
+        colorVariant={props.buttonColorVariant ? props.buttonColorVariant : ButtonColorVariant.MonochromeDark}
         styleVariant={props.buttonStyleVariant ? props.buttonStyleVariant : ButtonStyleVariant.Secondary}
         onClick={props.onClick}
       />
