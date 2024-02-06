@@ -8,13 +8,15 @@ import TextInfoContent from '@mui-treasury/components/content/textInfo'
 import { useN01TextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/n01'
 import { useBouncyShadowStyles } from '@mui-treasury/styles/shadow/bouncy'
 import { RANDOM_IMAGE_URL } from '../../../constants/workspace'
-import { SendIcon } from '@channel.io/bezier-icons'
+import { PlusIcon, SendIcon } from '@channel.io/bezier-icons'
 import { Button, ButtonColorVariant, ButtonStyleVariant } from '@channel.io/bezier-react'
 import { useNavigate } from 'react-router-dom'
+import { WORKSPACE_ADD_CARD_KEY } from '../../../constants/workspace'
 
 interface WorkspaceCardProps {
+  id: string
   image?: string
-  overline: string
+  overline?: string
   heading: string
   body?: string
 }
@@ -37,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-const WorkspaceCard: React.FC<WorkspaceCardProps> = ({ image, overline, heading, body }) => {
+const WorkspaceCard: React.FC<WorkspaceCardProps> = (props) => {
   const styles = useStyles()
   const textCardContentStyles = useN01TextInfoContentStyles()
   const shadowStyles = useBouncyShadowStyles()
@@ -49,21 +51,21 @@ const WorkspaceCard: React.FC<WorkspaceCardProps> = ({ image, overline, heading,
 
   return (
     <Card className={clsx(styles.root, shadowStyles.root)}>
-      <CardMedia className={styles.media} image={image ? image : RANDOM_IMAGE_URL} />
+      <CardMedia className={styles.media} image={props.image ? props.image : RANDOM_IMAGE_URL} />
       <CardContent className={styles.content}>
         <TextInfoContent
           classes={textCardContentStyles}
-          overline={'마감일 : ' + overline}
-          heading={heading}
-          body={body}
+          overline={props.id === WORKSPACE_ADD_CARD_KEY ? '' : '마감일 : ' + props.overline}
+          heading={props.heading}
+          body={props.body}
         />
         <Button
           className={styles.enter_button}
-          text="입장하기"
-          rightContent={SendIcon}
+          text={props.id === WORKSPACE_ADD_CARD_KEY ? '추가하기' : '입장하기'}
+          rightContent={props.id === WORKSPACE_ADD_CARD_KEY ? PlusIcon : SendIcon}
           styleVariant={ButtonStyleVariant.Primary}
           colorVariant={ButtonColorVariant.Red}
-          onClick={onClickCard}
+          onClick={props.id === WORKSPACE_ADD_CARD_KEY ? () => {} : onClickCard}
         />
       </CardContent>
     </Card>

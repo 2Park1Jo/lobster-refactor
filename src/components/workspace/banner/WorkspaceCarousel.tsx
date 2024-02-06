@@ -8,11 +8,9 @@ interface Card {
 
 interface WorkspaceCarouselProps {
   cards: Card[]
-  setModalIsOpen: (isOpen: boolean) => void
   width: string
   height: string
   margin: string
-  modalIsOpen: any
   offset: number
   showArrows: boolean
 }
