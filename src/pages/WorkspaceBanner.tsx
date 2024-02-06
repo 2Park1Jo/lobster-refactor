@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import WorkSpaceBanner from '../components/workspace/banner/WorkspaceBanner'
+import WorkspaceBannerMenu from '../components/workspace/banner/WorkspaceBannerMenu'
 import { getWorkspaceData } from '../assets/workspaceData'
 import workspaceBannerStyles from '../styles/workspace/workspaceBanner.module.scss'
 
-interface WorkspaceBannerProps {}
-
-const WorkspaceBanner: React.FC<WorkspaceBannerProps> = (props) => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
-
+const WorkspaceBanner: React.FC = () => {
   return (
     <div className={workspaceBannerStyles.container}>
-      <WorkSpaceBanner allWorkspace={getWorkspaceData()} modalIsOpen={isModalOpen} setModalIsOpen={setIsModalOpen} />
+      <div className={workspaceBannerStyles.header_container}>
+        <WorkspaceBannerMenu />
+      </div>
+      <div className={workspaceBannerStyles.body_container}>
+        <WorkSpaceBanner allWorkspace={getWorkspaceData()} />
+      </div>
     </div>
   )
 }
