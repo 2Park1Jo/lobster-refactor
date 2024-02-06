@@ -23,7 +23,12 @@ const MessageContent: React.FC<MessageViewProps> = (props) => {
     <Text className={messageStyles.none_avatar_message_container}>{props.message.content}</Text>
   ) : (
     <div className={messageStyles.avatar_message_container}>
-      <Avatar style={{ paddingRight: '10px' }} name="" size={AvatarSize.Size42} />
+      <Avatar
+        style={{ paddingRight: '10px' }}
+        name=""
+        size={AvatarSize.Size42}
+        avatarUrl={props.message.sender.profileImage}
+      />
       <VStack>
         <Text bold>
           {props.message.sender.name}
